@@ -216,6 +216,28 @@ const CHAIN_INFO: ChainInfoMap = {
     nativeCurrency: { name: 'Celo', symbol: 'CELO', decimals: 18 },
     defaultListUrl: CELO_LIST,
   },
+  [SupportedChainId.ETHW]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://openapi.chainge.finance/app?',
+    docs: 'https://linktr.ee/ethw',
+    explorer: 'https://www.oklink.com/en/ethw/',
+    infoLink: 'https://linktr.ee/ethw',
+    label: 'ETHW',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'Ether', symbol: 'ETHW', decimals: 18 },
+  },
+  [SupportedChainId.ETHW_ICEBERG]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: ms`10m`,
+    bridge: 'https://openapi.chainge.finance/app?',
+    docs: 'https://linktr.ee/ethw',
+    explorer: 'https://www.oklink.com/en/ethw/',
+    infoLink: 'https://linktr.ee/ethw',
+    label: 'ETHW',
+    logoUrl: ethereumLogoUrl,
+    nativeCurrency: { name: 'Ether', symbol: 'ETHW', decimals: 18 },
+  },
 }
 
 export function getChainInfo(chainId: SupportedL1ChainId): L1ChainInfo

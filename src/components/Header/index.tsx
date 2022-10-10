@@ -1,27 +1,21 @@
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
+import Web3Status from 'components/Web3Status'
 import { getChainInfoOrDefault } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { TokensVariant, useTokensFlag } from 'featureFlags/flags/tokens'
 import { darken } from 'polished'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Text } from 'rebass'
-import { useShowClaimPopup, useToggleSelfClaimModal } from 'state/application/hooks'
-import { useUserHasAvailableClaim } from 'state/claim/hooks'
 import { useNativeCurrencyBalances } from 'state/connection/hooks'
-import { useUserHasSubmittedClaim } from 'state/transactions/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import styled, { useTheme } from 'styled-components/macro'
 
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
-import { ExternalLink, ThemedText } from '../../theme'
+import { ExternalLink } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
-import { CardNoise } from '../earn/styled'
-import Menu from '../Menu'
 import Row from '../Row'
-import { Dots } from '../swap/styleds'
-import Web3Status from '../Web3Status'
 import HolidayOrnament from './HolidayOrnament'
 import NetworkSelector from './NetworkSelector'
 
@@ -133,28 +127,28 @@ const AccountElement = styled.div<{ active: boolean }>`
   }
 `
 
-const UNIAmount = styled(AccountElement)`
-  color: white;
-  padding: 4px 8px;
-  height: 36px;
-  font-weight: 500;
-  background-color: ${({ theme }) => theme.deprecated_bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-`
+// const UNIAmount = styled(AccountElement)`
+//   color: white;
+//   padding: 4px 8px;
+//   height: 36px;
+//   font-weight: 500;
+//   background-color: ${({ theme }) => theme.deprecated_bg3};
+//   background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+// `
 
-const UNIWrapper = styled.span`
-  width: fit-content;
-  position: relative;
-  cursor: pointer;
+// const UNIWrapper = styled.span`
+//   width: fit-content;
+//   position: relative;
+//   cursor: pointer;
 
-  :hover {
-    opacity: 0.8;
-  }
+//   :hover {
+//     opacity: 0.8;
+//   }
 
-  :active {
-    opacity: 0.9;
-  }
-`
+//   :active {
+//     opacity: 0.9;
+//   }
+// `
 
 const BalanceText = styled(Text)`
   ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToExtraSmall`
@@ -248,21 +242,22 @@ export default function Header() {
 
   const { account, chainId } = useWeb3React()
 
+
   const userEthBalance = useNativeCurrencyBalances(account ? [account] : [])?.[account ?? '']
   const [darkMode] = useDarkModeManager()
   const { deprecated_white, deprecated_black } = useTheme()
 
-  const toggleClaimModal = useToggleSelfClaimModal()
+  // const toggleClaimModal = useToggleSelfClaimModal()
 
-  const availableClaim: boolean = useUserHasAvailableClaim(account)
+  // const availableClaim: boolean = useUserHasAvailableClaim(account)
 
-  const { claimTxn } = useUserHasSubmittedClaim(account ?? undefined)
+  // const { claimTxn } = useUserHasSubmittedClaim(account ?? undefined)
 
-  const showClaimPopup = useShowClaimPopup()
+  // const showClaimPopup = useShowClaimPopup()
 
   const scrollY = useScrollPosition()
 
-  const { pathname } = useLocation()
+  // const { pathname } = useLocation()
 
   const {
     infoLink,
@@ -271,12 +266,12 @@ export default function Header() {
 
   // work around https://github.com/remix-run/react-router/issues/8161
   // as we can't pass function `({isActive}) => ''` to className with styled-components
-  const isPoolActive =
-    pathname.startsWith('/pool') ||
-    pathname.startsWith('/add') ||
-    pathname.startsWith('/remove') ||
-    pathname.startsWith('/increase') ||
-    pathname.startsWith('/find')
+  // const isPoolActive =
+  //   pathname.startsWith('/pool') ||
+  //   pathname.startsWith('/add') ||
+  //   pathname.startsWith('/remove') ||
+  //   pathname.startsWith('/increase') ||
+  //   pathname.startsWith('/find')
 
   return (
     <HeaderFrame showBackground={scrollY > 45}>
@@ -296,14 +291,14 @@ export default function Header() {
             <Trans>Tokens</Trans>
           </StyledNavLink>
         )}
-        <StyledNavLink
+        {/* <StyledNavLink
           data-cy="pool-nav-link"
           id={`pool-nav-link`}
           to={'/pool'}
           className={isPoolActive ? activeClassName : undefined}
         >
           <Trans>Pool</Trans>
-        </StyledNavLink>
+        </StyledNavLink> */}
         {(!chainId || chainId === SupportedChainId.MAINNET) && (
           <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
             <Trans>Vote</Trans>
@@ -320,7 +315,7 @@ export default function Header() {
           <NetworkSelector />
         </HeaderElement>
         <HeaderElement>
-          {availableClaim && !showClaimPopup && (
+          {/* {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <ThemedText.DeprecatedWhite padding="0 2px">
@@ -335,7 +330,7 @@ export default function Header() {
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>
-          )}
+          )} */}
           <AccountElement active={!!account}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0, userSelect: 'none' }} pl="0.75rem" pr=".4rem" fontWeight={500}>
@@ -347,9 +342,9 @@ export default function Header() {
             <Web3Status />
           </AccountElement>
         </HeaderElement>
-        <HeaderElement>
+        {/* <HeaderElement>
           <Menu />
-        </HeaderElement>
+        </HeaderElement> */}
       </HeaderControls>
     </HeaderFrame>
   )

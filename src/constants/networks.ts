@@ -87,6 +87,16 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     // "Safe" URLs
     `https://alfajores-forno.celo-testnet.org`,
   ],
+  [SupportedChainId.ETHW]: [
+    // "Safe" URLs
+    'https://rpc.ankr.com/eth',
+    'https://eth-mainnet.public.blastapi.io',
+  ],
+  [SupportedChainId.ETHW_ICEBERG]: [
+    // "Safe" URLs
+    'https://rpc.ankr.com/eth',
+    'https://eth-mainnet.public.blastapi.io',
+  ],
 }
 
 /**
@@ -134,4 +144,6 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
+  [SupportedChainId.ETHW]: [`https://mainnet.ethereumpow.org/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.ETHW]],
+  [SupportedChainId.ETHW_ICEBERG]: [`https://iceberg.ethereumpow.org`, ...FALLBACK_URLS[SupportedChainId.ETHW]],
 }

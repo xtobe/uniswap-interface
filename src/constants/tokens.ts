@@ -123,6 +123,14 @@ export const DAI_OPTIMISM = new Token(
   'DAI',
   'Dai stable coin'
 )
+
+export const USDC_ETHW = new Token(
+  SupportedChainId.ETHW,
+  '0x11bbB41B3E8baf7f75773DB7428d5AcEe25FEC75',
+  6,
+  'USDC',
+  'USD//C'
+)
 export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.MAINNET]: USDC_MAINNET,
   [SupportedChainId.ARBITRUM_ONE]: USDC_ARBITRUM,
@@ -137,6 +145,8 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.RINKEBY]: USDC_RINKEBY,
   [SupportedChainId.KOVAN]: USDC_KOVAN,
   [SupportedChainId.ROPSTEN]: USDC_ROPSTEN,
+  [SupportedChainId.ETHW]: USDC_ETHW,
+  [SupportedChainId.ETHW_ICEBERG]: USDC_ARBITRUM,
 }
 export const DAI_POLYGON = new Token(
   SupportedChainId.POLYGON,
@@ -336,6 +346,14 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'Celo Euro Stablecoin'
 )
 
+export const ETHW_DOLLAR = new Token(
+  SupportedChainId.ETHW,
+  '0x8A496486f4c7CB840555Bc2Be327CBA1447027C3',
+  18,
+  '',
+  'ETHW Dollar Stablecoin'
+)
+
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
@@ -401,6 +419,20 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     18,
     'CELO',
     'Celo native asset'
+  ),
+  [SupportedChainId.ETHW]: new Token(
+    SupportedChainId.ETHW,
+    '0xaf3ccfD9B59b36628cC2F659a09d6440795B2520',
+    18,
+    'ETHW',
+    'ETH native asset'
+  ),
+  [SupportedChainId.ETHW_ICEBERG]: new Token(
+    SupportedChainId.ETHW_ICEBERG,
+    '0xaf3ccfD9B59b36628cC2F659a09d6440795B2520',
+    18,
+    'ETHW',
+    'ETH native asset'
   ),
 }
 
@@ -484,5 +516,6 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
     [SupportedChainId.KOVAN]: USDC_KOVAN.address,
     [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
+    [SupportedChainId.ETHW]: USDC_ETHW.address,
   },
 }

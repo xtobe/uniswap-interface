@@ -272,11 +272,11 @@ function Row({
 }
 
 const NETWORK_SELECTOR_CHAINS = [
-  SupportedChainId.MAINNET,
-  SupportedChainId.POLYGON,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.CELO,
+  // SupportedChainId.MAINNET,
+  // SupportedChainId.POLYGON,
+  // SupportedChainId.OPTIMISM,
+  // SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ETHW,
 ]
 
 export default function NetworkSelector() {
