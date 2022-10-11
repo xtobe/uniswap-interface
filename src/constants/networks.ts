@@ -144,6 +144,6 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
   [SupportedChainId.CELO_ALFAJORES]: FALLBACK_URLS[SupportedChainId.CELO_ALFAJORES],
-  [SupportedChainId.ETHW]: [`https://mainnet.ethereumpow.org/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.ETHW]],
-  [SupportedChainId.ETHW_ICEBERG]: [`https://iceberg.ethereumpow.org`, ...FALLBACK_URLS[SupportedChainId.ETHW]],
+  [SupportedChainId.ETHW]: [`https://mainnet.ethereumpow.org`],
+  [SupportedChainId.ETHW_ICEBERG]: [`https://iceberg.ethereumpow.org`],
 }

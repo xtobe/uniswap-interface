@@ -21,6 +21,8 @@ const CELO_QUOTER_ADDRESSES = '0x82825d0554fA07f7FC52Ab63c961F330fdEFa8E8'
 const CELO_NONFUNGIBLE_POSITION_MANAGER_ADDRESSES = '0x3d79EdAaBC0EaB6F08ED885C05Fc0B014290D95A'
 const CELO_TICK_LENS_ADDRESSES = '0x5f115D9113F88e0a0Db1b5033D90D4a9690AcD3D'
 
+// const LFG_FACTORY_ADDRESS = '0x4f381d5fF61ad1D0eC355fEd2Ac4000eA1e67854'
+// const LFG_ROUTER_ADDRESS = '0xf66cef53c518659bFA0A9a4Aa07445AF08bf9B3a'
 /* V3 Contract Addresses */
 export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
   ...constructSameAddressMap(V3_FACTORY_ADDRESS, [
@@ -30,8 +32,9 @@ export const V3_CORE_FACTORY_ADDRESSES: AddressMap = {
     SupportedChainId.ARBITRUM_RINKEBY,
     SupportedChainId.POLYGON_MUMBAI,
     SupportedChainId.POLYGON,
-    SupportedChainId.ETHW,
+    SupportedChainId.ETHW
   ]),
+  // [SupportedChainId.ETHW]:LFG_FACTORY_ADDRESS,
   [SupportedChainId.CELO]: CELO_V3_CORE_FACTORY_ADDRESSES,
   [SupportedChainId.CELO_ALFAJORES]: CELO_V3_CORE_FACTORY_ADDRESSES,
 }
@@ -55,7 +58,6 @@ export const MULTICALL_ADDRESS: AddressMap = {
     SupportedChainId.POLYGON_MUMBAI,
     SupportedChainId.POLYGON,
     SupportedChainId.ETHW,
-
   ]),
   [SupportedChainId.ARBITRUM_ONE]: '0xadF885960B47eA2CD9B55E6DAc6B42b7Cb2806dB',
   [SupportedChainId.ARBITRUM_RINKEBY]: '0xa501c031958F579dB7676fF1CE78AD305794d579',
@@ -73,6 +75,7 @@ export const SWAP_ROUTER_ADDRESSES: AddressMap = {
     SupportedChainId.POLYGON_MUMBAI,
     SupportedChainId.ETHW,
   ]),
+  // [SupportedChainId.ETHW]:LFG_FACTORY_ADDRESS,
   [SupportedChainId.CELO]: CELO_ROUTER_ADDRESS,
   [SupportedChainId.CELO_ALFAJORES]: CELO_ROUTER_ADDRESS,
 }

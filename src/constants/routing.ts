@@ -122,6 +122,14 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
   ],
+  [SupportedChainId.ETHW]: [
+    nativeOnChain(SupportedChainId.ETHW),
+    DAI,
+    USDC_MAINNET,
+    USDT,
+    WBTC,
+    WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
+  ],
   [SupportedChainId.ROPSTEN]: [
     nativeOnChain(SupportedChainId.ROPSTEN),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROPSTEN] as Token,
