@@ -236,7 +236,7 @@ const CHAIN_INFO: ChainInfoMap = {
     infoLink: 'https://linktr.ee/ethw',
     label: 'ETHW',
     logoUrl: ethereumLogoUrl,
-    nativeCurrency: { name: 'Ether', symbol: 'ETHW', decimals: 18 },
+    nativeCurrency: { name: 'Ether PoW', symbol: 'ETH', decimals: 18 },
   },
 }
 

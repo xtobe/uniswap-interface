@@ -6,7 +6,7 @@ import { getChainInfoOrDefault } from 'constants/chainInfo'
 import { SupportedChainId } from 'constants/chains'
 import { TokensVariant, useTokensFlag } from 'featureFlags/flags/tokens'
 import { darken } from 'polished'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { Text } from 'rebass'
 import { useNativeCurrencyBalances } from 'state/connection/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
@@ -257,7 +257,7 @@ export default function Header() {
 
   const scrollY = useScrollPosition()
 
-  // const { pathname } = useLocation()
+  const { pathname } = useLocation()
 
   const {
     infoLink,
@@ -266,12 +266,12 @@ export default function Header() {
 
   // work around https://github.com/remix-run/react-router/issues/8161
   // as we can't pass function `({isActive}) => ''` to className with styled-components
-  // const isPoolActive =
-  //   pathname.startsWith('/pool') ||
-  //   pathname.startsWith('/add') ||
-  //   pathname.startsWith('/remove') ||
-  //   pathname.startsWith('/increase') ||
-  //   pathname.startsWith('/find')
+  const isPoolActive =
+    pathname.startsWith('/pool') ||
+    pathname.startsWith('/add') ||
+    pathname.startsWith('/remove') ||
+    pathname.startsWith('/increase') ||
+    pathname.startsWith('/find')
 
   return (
     <HeaderFrame showBackground={scrollY > 45}>
@@ -291,14 +291,14 @@ export default function Header() {
             <Trans>Tokens</Trans>
           </StyledNavLink>
         )}
-        {/* <StyledNavLink
+        <StyledNavLink
           data-cy="pool-nav-link"
           id={`pool-nav-link`}
           to={'/pool'}
           className={isPoolActive ? activeClassName : undefined}
         >
           <Trans>Pool</Trans>
-        </StyledNavLink> */}
+        </StyledNavLink>
         {(!chainId || chainId === SupportedChainId.MAINNET) && (
           <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
             <Trans>Vote</Trans>

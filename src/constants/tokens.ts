@@ -346,12 +346,20 @@ export const CEUR_CELO_ALFAJORES = new Token(
   'Celo Euro Stablecoin'
 )
 
+export const ETH_POW = new Token(
+  SupportedChainId.ETHW,
+  '0xaf3ccfD9B59b36628cC2F659a09d6440795B2520',
+  18,
+  'ETHW',
+  'ETH PoW'
+)
+
 export const ETHW_DOLLAR = new Token(
   SupportedChainId.ETHW,
   '0x8A496486f4c7CB840555Bc2Be327CBA1447027C3',
   18,
   '',
-  'ETHW Dollar Stablecoin'
+  'ETHPoW Dollar Stablecoin'
 )
 
 export const UNI: { [chainId: number]: Token } = {
@@ -360,6 +368,8 @@ export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
+  [SupportedChainId.ETHW]: new Token(SupportedChainId.ETHW, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
+
 }
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
@@ -495,7 +505,10 @@ export function nativeOnChain(chainId: number): NativeCurrency | Token {
     nativeCurrency = new MaticNativeCurrency(chainId)
   } else if (isCelo(chainId)) {
     nativeCurrency = getCeloNativeCurrency(chainId)
-  } else {
+  } else if (chainId === SupportedChainId.ETHW){
+    nativeCurrency = WRAPPED_NATIVE_CURRENCY[chainId] as Token;
+  }
+  else {
     nativeCurrency = ExtendedEther.onChain(chainId)
   }
   return (cachedNativeCurrency[chainId] = nativeCurrency)
